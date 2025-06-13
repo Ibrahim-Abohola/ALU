@@ -1,0 +1,17 @@
+{D:/CMP/1st year/first term/Logic design/project/ALU.v} {1 {vlog -work work -stats=none {D:/CMP/1st year/first term/Logic design/project/ALU.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module ALU
+-- Compiling module ALU_small
+-- Compiling module adder_subtractor2
+-- Compiling module HalfAdder
+-- Compiling module FullAdder
+-- Compiling module adder_subtractor1
+-- Compiling module binary_to_bcd
+-- Compiling module Multiplier
+-- Compiling module Divisor
+-- Compiling module sevenseg
+
+Top level modules:
+	ALU
+
+} {} {}}

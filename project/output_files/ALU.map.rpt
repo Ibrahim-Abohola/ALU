@@ -1,0 +1,618 @@
+Analysis & Synthesis report for ALU
+Tue Dec 24 13:21:02 2024
+Quartus Prime Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Source Files Read
+  6. Analysis & Synthesis Resource Usage Summary
+  7. Analysis & Synthesis Resource Utilization by Entity
+  8. User-Specified and Inferred Latches
+  9. Registers Removed During Synthesis
+ 10. General Register Statistics
+ 11. Inverted Register Statistics
+ 12. Multiplexer Restructuring Statistics (Restructuring Performed)
+ 13. Port Connectivity Checks: "ALU_small:Control|sevenseg:out4"
+ 14. Port Connectivity Checks: "ALU_small:Control|Divisor:div"
+ 15. Port Connectivity Checks: "ALU_small:Control|Multiplier:mul"
+ 16. Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:sub"
+ 17. Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m4"
+ 18. Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m3"
+ 19. Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[7].f2"
+ 20. Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1"
+ 21. Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:add"
+ 22. Post-Synthesis Netlist Statistics for Top Partition
+ 23. Elapsed Time Per Partition
+ 24. Analysis & Synthesis Messages
+ 25. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 2024  Intel Corporation. All rights reserved.
+Your use of Intel Corporation's design tools, logic functions 
+and other software and tools, and any partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Intel Program License 
+Subscription Agreement, the Intel Quartus Prime License Agreement,
+the Intel FPGA IP License Agreement, or other applicable license
+agreement, including, without limitation, that your use is for
+the sole purpose of programming logic devices manufactured by
+Intel and sold by Intel or its authorized distributors.  Please
+refer to the applicable agreement for further details, at
+https://fpgasoftware.intel.com/eula.
+
+
+
++----------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                     ;
++---------------------------------+------------------------------------------------+
+; Analysis & Synthesis Status     ; Successful - Tue Dec 24 13:21:02 2024          ;
+; Quartus Prime Version           ; 23.1std.1 Build 993 05/14/2024 SC Lite Edition ;
+; Revision Name                   ; ALU                                            ;
+; Top-level Entity Name           ; ALU                                            ;
+; Family                          ; Cyclone V                                      ;
+; Logic utilization (in ALMs)     ; N/A                                            ;
+; Total registers                 ; 40                                             ;
+; Total pins                      ; 52                                             ;
+; Total virtual pins              ; 0                                              ;
+; Total block memory bits         ; 0                                              ;
+; Total DSP Blocks                ; 0                                              ;
+; Total HSSI RX PCSs              ; 0                                              ;
+; Total HSSI PMA RX Deserializers ; 0                                              ;
+; Total HSSI TX PCSs              ; 0                                              ;
+; Total HSSI PMA TX Serializers   ; 0                                              ;
+; Total PLLs                      ; 0                                              ;
+; Total DLLs                      ; 0                                              ;
++---------------------------------+------------------------------------------------+
+
+
++---------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                             ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                          ; Setting            ; Default Value      ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                          ; 5CSEMA5F31C6       ;                    ;
+; Top-level entity name                                                           ; ALU                ; ALU                ;
+; Family name                                                                     ; Cyclone V          ; Cyclone V          ;
+; Use smart compilation                                                           ; Off                ; Off                ;
+; Enable parallel Assembler and Timing Analyzer during compilation                ; On                 ; On                 ;
+; Enable compact report table                                                     ; Off                ; Off                ;
+; Restructure Multiplexers                                                        ; Auto               ; Auto               ;
+; MLAB Add Timing Constraints For Mixed-Port Feed-Through Mode Setting Don't Care ; Off                ; Off                ;
+; Create Debugging Nodes for IP Cores                                             ; Off                ; Off                ;
+; Preserve fewer node names                                                       ; On                 ; On                 ;
+; Intel FPGA IP Evaluation Mode                                                   ; Enable             ; Enable             ;
+; Verilog Version                                                                 ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                                    ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                        ; Auto               ; Auto               ;
+; Safe State Machine                                                              ; Off                ; Off                ;
+; Extract Verilog State Machines                                                  ; On                 ; On                 ;
+; Extract VHDL State Machines                                                     ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                               ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                      ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                                  ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                         ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                       ; On                 ; On                 ;
+; Parallel Synthesis                                                              ; On                 ; On                 ;
+; DSP Block Balancing                                                             ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                              ; On                 ; On                 ;
+; Power-Up Don't Care                                                             ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                                    ; Off                ; Off                ;
+; Remove Duplicate Registers                                                      ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                            ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                          ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                           ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                       ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                            ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                             ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                                  ; Off                ; Off                ;
+; Optimization Technique                                                          ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                              ; 70                 ; 70                 ;
+; Auto Carry Chains                                                               ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                            ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                           ; Off                ; Off                ;
+; Auto ROM Replacement                                                            ; On                 ; On                 ;
+; Auto RAM Replacement                                                            ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                      ; On                 ; On                 ;
+; Auto Shift Register Replacement                                                 ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                                 ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                                   ; On                 ; On                 ;
+; Strict RAM Replacement                                                          ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                               ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                           ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                              ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                                   ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                             ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                               ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                         ; On                 ; On                 ;
+; Report Parameter Settings                                                       ; On                 ; On                 ;
+; Report Source Assignments                                                       ; On                 ; On                 ;
+; Report Connectivity Checks                                                      ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                              ; Off                ; Off                ;
+; Synchronization Register Chain Length                                           ; 3                  ; 3                  ;
+; Power Optimization During Synthesis                                             ; Normal compilation ; Normal compilation ;
+; HDL message level                                                               ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                                 ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                        ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                              ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                       ; 100                ; 100                ;
+; Clock MUX Protection                                                            ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                     ; Off                ; Off                ;
+; Block Design Naming                                                             ; Auto               ; Auto               ;
+; SDC constraint protection                                                       ; Off                ; Off                ;
+; Synthesis Effort                                                                ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal                    ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                            ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                              ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                     ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                          ; On                 ; On                 ;
+; Automatic Parallel Synthesis                                                    ; On                 ; On                 ;
+; Partial Reconfiguration Bitstream ID                                            ; Off                ; Off                ;
++---------------------------------------------------------------------------------+--------------------+--------------------+
+
+
++------------------------------------------+
+; Parallel Compilation                     ;
++----------------------------+-------------+
+; Processors                 ; Number      ;
++----------------------------+-------------+
+; Number detected on machine ; 16          ;
+; Maximum allowed            ; 16          ;
+;                            ;             ;
+; Average used               ; 1.00        ;
+; Maximum used               ; 16          ;
+;                            ;             ;
+; Usage by Processor         ; % Time Used ;
+;     Processor 1            ; 100.0%      ;
+;     Processor 2            ;   0.0%      ;
+;     Processor 3            ;   0.0%      ;
+;     Processor 4            ;   0.0%      ;
+;     Processor 5            ;   0.0%      ;
+;     Processor 6            ;   0.0%      ;
+;     Processors 7-16        ;   0.0%      ;
++----------------------------+-------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Source Files Read                                                                                                                ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------+---------+
+; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                  ; Library ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------+---------+
+; ALU.v                            ; yes             ; User Verilog HDL File  ; D:/CMP/1st year/first term/Logic design/project/project/ALU.v ;         ;
++----------------------------------+-----------------+------------------------+---------------------------------------------------------------+---------+
+
+
++------------------------------------------------------------+
+; Analysis & Synthesis Resource Usage Summary                ;
++---------------------------------------------+--------------+
+; Resource                                    ; Usage        ;
++---------------------------------------------+--------------+
+; Estimate of Logic utilization (ALMs needed) ; 1267         ;
+;                                             ;              ;
+; Combinational ALUT usage for logic          ; 1929         ;
+;     -- 7 input functions                    ; 4            ;
+;     -- 6 input functions                    ; 600          ;
+;     -- 5 input functions                    ; 252          ;
+;     -- 4 input functions                    ; 862          ;
+;     -- <=3 input functions                  ; 211          ;
+;                                             ;              ;
+; Dedicated logic registers                   ; 40           ;
+;                                             ;              ;
+; I/O pins                                    ; 52           ;
+;                                             ;              ;
+; Total DSP Blocks                            ; 0            ;
+;                                             ;              ;
+; Maximum fan-out node                        ; KEY[0]~input ;
+; Maximum fan-out                             ; 40           ;
+; Total fan-out                               ; 9580         ;
+; Average fan-out                             ; 4.62         ;
++---------------------------------------------+--------------+
+
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                                                                                                                      ;
++--------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------+-------------------+--------------+
+; Compilation Hierarchy Node           ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                                   ; Entity Name       ; Library Name ;
++--------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------+-------------------+--------------+
+; |ALU                                 ; 1929 (0)            ; 40 (0)                    ; 0                 ; 0          ; 52   ; 0            ; |ALU                                                                                                  ; ALU               ; work         ;
+;    |ALU_small:Control|               ; 1929 (39)           ; 40 (40)                   ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control                                                                                ; ALU_small         ; work         ;
+;       |Divisor:div|                  ; 1812 (1812)         ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|Divisor:div                                                                    ; Divisor           ; work         ;
+;       |Multiplier:mul|               ; 10 (10)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|Multiplier:mul                                                                 ; Multiplier        ; work         ;
+;       |adder_subtractor2:add|        ; 27 (15)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add                                                          ; adder_subtractor2 ; work         ;
+;          |adder_subtractor1:m1|      ; 8 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1                                     ; adder_subtractor1 ; work         ;
+;             |FullAdder:addsub[1].f2| ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[1].f2              ; FullAdder         ; work         ;
+;                |HalfAdder:h2|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[1].f2|HalfAdder:h2 ; HalfAdder         ; work         ;
+;             |FullAdder:addsub[2].f2| ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[2].f2              ; FullAdder         ; work         ;
+;                |HalfAdder:h2|        ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[2].f2|HalfAdder:h2 ; HalfAdder         ; work         ;
+;             |FullAdder:addsub[3].f2| ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[3].f2              ; FullAdder         ; work         ;
+;                |HalfAdder:h2|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[3].f2|HalfAdder:h2 ; HalfAdder         ; work         ;
+;             |FullAdder:addsub[4].f2| ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[4].f2              ; FullAdder         ; work         ;
+;                |HalfAdder:h2|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[4].f2|HalfAdder:h2 ; HalfAdder         ; work         ;
+;             |FullAdder:addsub[5].f2| ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[5].f2              ; FullAdder         ; work         ;
+;                |HalfAdder:h2|        ; 2 (2)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[5].f2|HalfAdder:h2 ; HalfAdder         ; work         ;
+;             |FullAdder:addsub[6].f2| ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[6].f2              ; FullAdder         ; work         ;
+;                |HalfAdder:h2|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[6].f2|HalfAdder:h2 ; HalfAdder         ; work         ;
+;          |adder_subtractor1:m3|      ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m3                                     ; adder_subtractor1 ; work         ;
+;             |FullAdder:addsub[3].f2| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m3|FullAdder:addsub[3].f2              ; FullAdder         ; work         ;
+;             |FullAdder:addsub[5].f2| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m3|FullAdder:addsub[5].f2              ; FullAdder         ; work         ;
+;          |adder_subtractor1:m4|      ; 2 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m4                                     ; adder_subtractor1 ; work         ;
+;             |FullAdder:addsub[0].f1| ; 1 (0)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m4|FullAdder:addsub[0].f1              ; FullAdder         ; work         ;
+;                |HalfAdder:h1|        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m4|FullAdder:addsub[0].f1|HalfAdder:h1 ; HalfAdder         ; work         ;
+;             |FullAdder:addsub[1].f2| ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m4|FullAdder:addsub[1].f2              ; FullAdder         ; work         ;
+;       |adder_subtractor2:sub|        ; 9 (9)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|adder_subtractor2:sub                                                          ; adder_subtractor2 ; work         ;
+;       |binary_to_bcd:b_to_bcd|       ; 12 (12)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|binary_to_bcd:b_to_bcd                                                         ; binary_to_bcd     ; work         ;
+;       |sevenseg:out1|                ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|sevenseg:out1                                                                  ; sevenseg          ; work         ;
+;       |sevenseg:out2|                ; 7 (7)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|sevenseg:out2                                                                  ; sevenseg          ; work         ;
+;       |sevenseg:out3|                ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|sevenseg:out3                                                                  ; sevenseg          ; work         ;
+;       |sevenseg:out4|                ; 3 (3)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |ALU|ALU_small:Control|sevenseg:out4                                                                  ; sevenseg          ; work         ;
++--------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-------------------------------------------------------------------------------------------------------+-------------------+--------------+
+Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
+
+
++-------------------------------------------------------------------------------------------------------------------------------+
+; User-Specified and Inferred Latches                                                                                           ;
++-----------------------------------------------------+------------------------------------------------+------------------------+
+; Latch Name                                          ; Latch Enable Signal                            ; Free of Timing Hazards ;
++-----------------------------------------------------+------------------------------------------------+------------------------+
+; ALU_small:Control|adder_subtractor2:add|out[3]      ; ALU_small:Control|adder_subtractor2:add|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:sub|out[3]      ; ALU_small:Control|adder_subtractor2:sub|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:add|out[2]      ; ALU_small:Control|adder_subtractor2:add|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:sub|out[2]      ; ALU_small:Control|adder_subtractor2:sub|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:add|out[1]      ; ALU_small:Control|adder_subtractor2:add|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:sub|out[1]      ; ALU_small:Control|adder_subtractor2:sub|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:add|out[6]      ; ALU_small:Control|adder_subtractor2:add|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:sub|out[6]      ; ALU_small:Control|adder_subtractor2:sub|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:add|out[5]      ; ALU_small:Control|adder_subtractor2:add|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:sub|out[5]      ; ALU_small:Control|adder_subtractor2:sub|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:add|out[4]      ; ALU_small:Control|adder_subtractor2:add|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:sub|out[4]      ; ALU_small:Control|adder_subtractor2:sub|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:add|out[7]      ; ALU_small:Control|adder_subtractor2:add|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:sub|out[7]      ; ALU_small:Control|adder_subtractor2:sub|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:add|out[0]      ; ALU_small:Control|adder_subtractor2:add|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:sub|out[0]      ; ALU_small:Control|adder_subtractor2:sub|out[7] ; yes                    ;
+; ALU_small:Control|adder_subtractor2:add|signout     ; ALU_small:Control|Divisor:div|signout          ; yes                    ;
+; ALU_small:Control|adder_subtractor2:sub|signout     ; ALU_small:Control|Divisor:div|signout          ; yes                    ;
+; Number of user-specified and inferred latches = 18  ;                                                ;                        ;
++-----------------------------------------------------+------------------------------------------------+------------------------+
+Note: All latches listed above may not be present at the end of synthesis due to various synthesis optimizations.
+
+
++------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                 ;
++----------------------------------------+-------------------------------------------+
+; Register name                          ; Reason for Removal                        ;
++----------------------------------------+-------------------------------------------+
+; ALU_small:Control|HEX0[1]              ; Stuck at GND due to stuck port data_in    ;
+; ALU_small:Control|HEX4[1]              ; Stuck at GND due to stuck port data_in    ;
+; ALU_small:Control|current_result[3]    ; Merged with ALU_small:Control|c_result[3] ;
+; ALU_small:Control|current_result[6]    ; Merged with ALU_small:Control|c_result[6] ;
+; ALU_small:Control|current_result[7]    ; Merged with ALU_small:Control|c_result[7] ;
+; ALU_small:Control|current_result[5]    ; Merged with ALU_small:Control|c_result[5] ;
+; ALU_small:Control|current_result[4]    ; Merged with ALU_small:Control|c_result[4] ;
+; ALU_small:Control|current_result[2]    ; Merged with ALU_small:Control|c_result[2] ;
+; ALU_small:Control|current_result[1]    ; Merged with ALU_small:Control|c_result[1] ;
+; ALU_small:Control|current_result[0]    ; Merged with ALU_small:Control|c_result[0] ;
+; Total Number of Removed Registers = 10 ;                                           ;
++----------------------------------------+-------------------------------------------+
+
+
++------------------------------------------------------+
+; General Register Statistics                          ;
++----------------------------------------------+-------+
+; Statistic                                    ; Value ;
++----------------------------------------------+-------+
+; Total registers                              ; 40    ;
+; Number of registers using Synchronous Clear  ; 0     ;
+; Number of registers using Synchronous Load   ; 0     ;
+; Number of registers using Asynchronous Clear ; 0     ;
+; Number of registers using Asynchronous Load  ; 0     ;
+; Number of registers using Clock Enable       ; 0     ;
+; Number of registers using Preset             ; 0     ;
++----------------------------------------------+-------+
+
+
++--------------------------------------------------+
+; Inverted Register Statistics                     ;
++----------------------------------------+---------+
+; Inverted Register                      ; Fan out ;
++----------------------------------------+---------+
+; ALU_small:Control|current_sign         ; 6       ;
+; Total number of inverted registers = 1 ;         ;
++----------------------------------------+---------+
+
+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                                  ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
+; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                        ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
+; 3:1                ; 6 bits    ; 12 LEs        ; 12 LEs               ; 0 LEs                  ; No         ; |ALU|ALU_small:Control|Multiplier:mul|tempout1[6] ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |ALU|ALU_small:Control|Multiplier:mul|tempout2[1] ;
+; 3:1                ; 7 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |ALU|ALU_small:Control|adder_subtractor2:add|out  ;
+; 8:1                ; 6 bits    ; 30 LEs        ; 30 LEs               ; 0 LEs                  ; No         ; |ALU|ALU_small:Control|Mux4                       ;
++--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------------------+
+
+
++-------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_small:Control|sevenseg:out4" ;
++----------+-------+----------+-------------------------------+
+; Port     ; Type  ; Severity ; Details                       ;
++----------+-------+----------+-------------------------------+
+; in[3..2] ; Input ; Info     ; Stuck at GND                  ;
++----------+-------+----------+-------------------------------+
+
+
++-----------------------------------------------------------+
+; Port Connectivity Checks: "ALU_small:Control|Divisor:div" ;
++-----------+-------+----------+----------------------------+
+; Port      ; Type  ; Severity ; Details                    ;
++-----------+-------+----------+----------------------------+
+; in2[7..2] ; Input ; Info     ; Stuck at GND               ;
++-----------+-------+----------+----------------------------+
+
+
++--------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_small:Control|Multiplier:mul" ;
++-----------+-------+----------+-------------------------------+
+; Port      ; Type  ; Severity ; Details                       ;
++-----------+-------+----------+-------------------------------+
+; in2[6..2] ; Input ; Info     ; Stuck at GND                  ;
++-----------+-------+----------+-------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:sub" ;
++-----------+-------+----------+--------------------------------------+
+; Port      ; Type  ; Severity ; Details                              ;
++-----------+-------+----------+--------------------------------------+
+; in2[7..2] ; Input ; Info     ; Stuck at GND                         ;
++-----------+-------+----------+--------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m4" ;
++--------+-------+----------+--------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                      ;
++--------+-------+----------+--------------------------------------------------------------+
+; is_sub ; Input ; Info     ; Stuck at VCC                                                 ;
++--------+-------+----------+--------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m3" ;
++--------+-------+----------+--------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                      ;
++--------+-------+----------+--------------------------------------------------------------+
+; is_sub ; Input ; Info     ; Stuck at VCC                                                 ;
++--------+-------+----------+--------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[7].f2" ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; Port  ; Type   ; Severity ; Details                                                                             ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+; carry ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++-------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1" ;
++--------+-------+----------+--------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                      ;
++--------+-------+----------+--------------------------------------------------------------+
+; is_sub ; Input ; Info     ; Stuck at GND                                                 ;
++--------+-------+----------+--------------------------------------------------------------+
+
+
++---------------------------------------------------------------------+
+; Port Connectivity Checks: "ALU_small:Control|adder_subtractor2:add" ;
++-----------+-------+----------+--------------------------------------+
+; Port      ; Type  ; Severity ; Details                              ;
++-----------+-------+----------+--------------------------------------+
+; in2[7..2] ; Input ; Info     ; Stuck at GND                         ;
++-----------+-------+----------+--------------------------------------+
+
+
++-----------------------------------------------------+
+; Post-Synthesis Netlist Statistics for Top Partition ;
++-----------------------+-----------------------------+
+; Type                  ; Count                       ;
++-----------------------+-----------------------------+
+; arriav_ff             ; 40                          ;
+;     plain             ; 40                          ;
+; arriav_lcell_comb     ; 1931                        ;
+;     arith             ; 687                         ;
+;         1 data inputs ; 16                          ;
+;         3 data inputs ; 1                           ;
+;         4 data inputs ; 664                         ;
+;         5 data inputs ; 6                           ;
+;     extend            ; 4                           ;
+;         7 data inputs ; 4                           ;
+;     normal            ; 1194                        ;
+;         0 data inputs ; 1                           ;
+;         1 data inputs ; 3                           ;
+;         2 data inputs ; 106                         ;
+;         3 data inputs ; 43                          ;
+;         4 data inputs ; 195                         ;
+;         5 data inputs ; 246                         ;
+;         6 data inputs ; 600                         ;
+;     shared            ; 46                          ;
+;         0 data inputs ; 8                           ;
+;         1 data inputs ; 6                           ;
+;         2 data inputs ; 12                          ;
+;         3 data inputs ; 17                          ;
+;         4 data inputs ; 3                           ;
+; boundary_port         ; 52                          ;
+;                       ;                             ;
+; Max LUT depth         ; 149.00                      ;
+; Average LUT depth     ; 136.39                      ;
++-----------------------+-----------------------------+
+
+
++-------------------------------+
+; Elapsed Time Per Partition    ;
++----------------+--------------+
+; Partition Name ; Elapsed Time ;
++----------------+--------------+
+; Top            ; 00:00:05     ;
++----------------+--------------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus Prime Analysis & Synthesis
+    Info: Version 23.1std.1 Build 993 05/14/2024 SC Lite Edition
+    Info: Processing started: Tue Dec 24 13:20:46 2024
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ALU -c ALU
+Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
+Info (20030): Parallel compilation is enabled and will use 16 of the 16 processors detected
+Info (12021): Found 10 design units, including 10 entities, in source file alu.v
+    Info (12023): Found entity 1: ALU File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 1
+    Info (12023): Found entity 2: ALU_small File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 17
+    Info (12023): Found entity 3: adder_subtractor2 File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 174
+    Info (12023): Found entity 4: HalfAdder File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 245
+    Info (12023): Found entity 5: FullAdder File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 250
+    Info (12023): Found entity 6: adder_subtractor1 File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 259
+    Info (12023): Found entity 7: binary_to_bcd File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 285
+    Info (12023): Found entity 8: Multiplier File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 321
+    Info (12023): Found entity 9: Divisor File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 386
+    Info (12023): Found entity 10: sevenseg File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 452
+Info (12127): Elaborating entity "ALU" for the top level hierarchy
+Info (12128): Elaborating entity "ALU_small" for hierarchy "ALU_small:Control" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 13
+Warning (10034): Output port "LEDR[9..3]" at ALU.v(25) has no driver File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 25
+Info (12128): Elaborating entity "adder_subtractor2" for hierarchy "ALU_small:Control|adder_subtractor2:add" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 82
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(192): inferring latch(es) for variable "out", which holds its previous value in one or more paths through the always construct File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 192
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(192): inferring latch(es) for variable "signout", which holds its previous value in one or more paths through the always construct File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 192
+Info (10041): Inferred latch for "signout" at ALU.v(198) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Info (10041): Inferred latch for "out[0]" at ALU.v(198) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Info (10041): Inferred latch for "out[1]" at ALU.v(198) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Info (10041): Inferred latch for "out[2]" at ALU.v(198) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Info (10041): Inferred latch for "out[3]" at ALU.v(198) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Info (10041): Inferred latch for "out[4]" at ALU.v(198) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Info (10041): Inferred latch for "out[5]" at ALU.v(198) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Info (10041): Inferred latch for "out[6]" at ALU.v(198) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Info (10041): Inferred latch for "out[7]" at ALU.v(198) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Info (12128): Elaborating entity "adder_subtractor1" for hierarchy "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 183
+Info (12128): Elaborating entity "FullAdder" for hierarchy "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[0].f1" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 272
+Info (12128): Elaborating entity "HalfAdder" for hierarchy "ALU_small:Control|adder_subtractor2:add|adder_subtractor1:m1|FullAdder:addsub[0].f1|HalfAdder:h1" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 252
+Info (12128): Elaborating entity "Multiplier" for hierarchy "ALU_small:Control|Multiplier:mul" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 95
+Info (12128): Elaborating entity "Divisor" for hierarchy "ALU_small:Control|Divisor:div" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 101
+Warning (10230): Verilog HDL assignment warning at ALU.v(436): truncated value with size 32 to match size of target (8) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 436
+Warning (10230): Verilog HDL assignment warning at ALU.v(437): truncated value with size 32 to match size of target (8) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 437
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(408): inferring latch(es) for variable "ToBeDivided", which holds its previous value in one or more paths through the always construct File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 408
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(408): inferring latch(es) for variable "counter", which holds its previous value in one or more paths through the always construct File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 408
+Warning (10240): Verilog HDL Always Construct warning at ALU.v(408): inferring latch(es) for variable "i", which holds its previous value in one or more paths through the always construct File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 408
+Info (12128): Elaborating entity "binary_to_bcd" for hierarchy "ALU_small:Control|binary_to_bcd:b_to_bcd" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 103
+Warning (10230): Verilog HDL assignment warning at ALU.v(304): truncated value with size 32 to match size of target (4) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 304
+Warning (10230): Verilog HDL assignment warning at ALU.v(303): truncated value with size 32 to match size of target (4) File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 303
+Info (12128): Elaborating entity "sevenseg" for hierarchy "ALU_small:Control|sevenseg:out1" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 106
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:add|out[3] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:sub|out[3] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:add|out[2] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:sub|out[2] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:add|out[1] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:sub|out[1] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:add|out[6] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:sub|out[6] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:add|out[5] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:sub|out[5] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:add|out[4] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:sub|out[4] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:add|out[7] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:sub|out[7] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:add|out[0] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:sub|out[0] has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:add|signout has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 175
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (13012): Latch ALU_small:Control|adder_subtractor2:sub|signout has unsafe behavior File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 175
+    Warning (13013): Ports D and ENA on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+    Warning (13013): Ports ENA and PRE on the latch are fed by the same signal SW[2] File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:add|out[3]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:sub|out[3]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:add|out[2]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:sub|out[2]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:add|out[1]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:sub|out[1]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:add|out[6]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:sub|out[6]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:add|out[5]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:sub|out[5]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:add|out[4]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:sub|out[4]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:add|out[7]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:sub|out[7]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:add|out[0]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (14026): LATCH primitive "ALU_small:Control|adder_subtractor2:sub|out[0]" is permanently enabled File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 198
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "HEX0[1]" is stuck at GND File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 4
+    Warning (13410): Pin "HEX4[1]" is stuck at GND File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 7
+    Warning (13410): Pin "LEDR[3]" is stuck at GND File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 9
+    Warning (13410): Pin "LEDR[4]" is stuck at GND File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 9
+    Warning (13410): Pin "LEDR[5]" is stuck at GND File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 9
+    Warning (13410): Pin "LEDR[6]" is stuck at GND File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 9
+    Warning (13410): Pin "LEDR[7]" is stuck at GND File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 9
+    Warning (13410): Pin "LEDR[8]" is stuck at GND File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 9
+    Warning (13410): Pin "LEDR[9]" is stuck at GND File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 9
+Info (286030): Timing-Driven Synthesis is running
+Info (144001): Generated suppressed messages file D:/CMP/1st year/first term/Logic design/project/project/output_files/ALU.map.smsg
+Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
+    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
+Warning (21074): Design contains 8 input pin(s) that do not drive logic
+    Warning (15610): No output dependent on input pin "SW[3]" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[6]" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[7]" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[8]" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+    Warning (15610): No output dependent on input pin "SW[9]" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 2
+    Warning (15610): No output dependent on input pin "KEY[1]" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 3
+    Warning (15610): No output dependent on input pin "KEY[2]" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 3
+    Warning (15610): No output dependent on input pin "KEY[3]" File: D:/CMP/1st year/first term/Logic design/project/project/ALU.v Line: 3
+Info (21057): Implemented 1996 device resources after synthesis - the final resource count might be different
+    Info (21058): Implemented 14 input pins
+    Info (21059): Implemented 38 output pins
+    Info (21061): Implemented 1944 logic cells
+Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 84 warnings
+    Info: Peak virtual memory: 4927 megabytes
+    Info: Processing ended: Tue Dec 24 13:21:02 2024
+    Info: Elapsed time: 00:00:16
+    Info: Total CPU time (on all processors): 00:00:36
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in D:/CMP/1st year/first term/Logic design/project/project/output_files/ALU.map.smsg.
+
+
